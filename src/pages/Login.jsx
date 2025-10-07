@@ -1,9 +1,9 @@
 import React from "react";
+import { Link } from "react-router";
 
 const Login = () => {
   return (
     <section className="relative min-h-screen bg-gradient-to-b from-[#FFF8E1] to-[#FFE5B4] flex items-center justify-center overflow-hidden">
-      
       <div className="absolute inset-0 pointer-events-none">
         {[...Array(30)].map((_, i) => (
           <span
@@ -27,7 +27,9 @@ const Login = () => {
 
         <form className="space-y-6">
           <div>
-            <label className="block text-[#3E2723] mb-2 font-medium">Email</label>
+            <label className="block text-[#3E2723] mb-2 font-medium">
+              Email
+            </label>
             <input
               type="email"
               placeholder="Enter your email"
@@ -36,7 +38,9 @@ const Login = () => {
           </div>
 
           <div>
-            <label className="block text-[#3E2723] mb-2 font-medium">Password</label>
+            <label className="block text-[#3E2723] mb-2 font-medium">
+              Password
+            </label>
             <input
               type="password"
               placeholder="Enter your password"
@@ -54,9 +58,12 @@ const Login = () => {
 
         <p className="text-center text-sm text-[#3E2723]/70 mt-6">
           Don't have an account?{" "}
-          <a href="#" className="text-[#6D4C41] font-semibold hover:underline">
+          <Link
+            to={"/register"}
+            className="text-[#6D4C41] font-semibold hover:underline"
+          >
             Sign Up
-          </a>
+          </Link>
         </p>
       </div>
     </section>
