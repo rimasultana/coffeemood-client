@@ -11,7 +11,6 @@ const steps = [
 const HowItWorks = () => {
   return (
     <section className="relative py-24 bg-gradient-to-br from-[#FFF8E1] via-[#FFE0B2] to-[#D7CCC8] overflow-hidden">
-      {/* Ambient Light Blobs */}
       <div className="absolute top-10 left-1/3 w-96 h-96 bg-[radial-gradient(circle,rgba(255,235,200,0.6)_0%,transparent_70%)] blur-3xl"></div>
       <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(109,76,65,0.25)_0%,transparent_70%)] blur-3xl"></div>
 
@@ -28,13 +27,11 @@ const HowItWorks = () => {
               hover:shadow-[0_10px_40px_rgba(0,0,0,0.15)] transition-all duration-500 
               hover:scale-105 group cursor-pointer border border-white/40"
             >
-              {/* Step badge */}
               <div className="absolute -top-4 -left-4 w-11 h-11 bg-gradient-to-br from-[#6D4C41] to-[#8D6E63] 
               text-white rounded-full flex items-center justify-center font-bold shadow-md z-10">
                 {i + 1}
               </div>
 
-              {/* Icon */}
               <div className="relative w-20 h-20 mx-auto mb-5 flex items-center justify-center 
               rounded-full bg-gradient-to-tr from-[#6D4C41] to-[#8D6E63] text-white shadow-lg 
               group-hover:shadow-[0_0_25px_rgba(109,76,65,0.5)] transition-transform duration-500 
@@ -43,18 +40,15 @@ const HowItWorks = () => {
                 <div className="absolute inset-0 rounded-full border-4 border-white/20 animate-ring pointer-events-none"></div>
               </div>
 
-              {/* Text */}
               <h3 className="text-xl font-bold text-[#3E2723] mb-2">{step.title}</h3>
               <p className="text-sm text-[#4E342E]/80 leading-relaxed">{step.desc}</p>
 
-              {/* Glow overlay */}
               <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-[#FFE0B2]/50 to-[#FFF3E0]/20 blur-md"></div>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Decorative Wave */}
       <div className="absolute bottom-0 left-0 w-full h-40 opacity-25">
         <svg viewBox="0 0 1440 320" className="w-full h-full">
           <path

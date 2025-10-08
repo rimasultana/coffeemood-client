@@ -5,7 +5,6 @@ import { Link } from "react-router";
 const NotFound = () => {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-[#FFF8E1] to-[#FFE5B4] overflow-hidden px-4">
-      {/* Background Floating Circles */}
       <div className="absolute inset-0 pointer-events-none">
         {[...Array(20)].map((_, i) => (
           <span
@@ -22,19 +21,15 @@ const NotFound = () => {
         ))}
       </div>
 
-      {/* Card */}
       <div className="relative bg-white/80 backdrop-blur-xl p-12 rounded-3xl shadow-2xl border border-[#D7CCC8]/40 w-full max-w-md text-center hover:scale-105 transition-transform duration-500 z-10">
-        {/* 404 */}
         <h1 className="text-6xl md:text-7xl font-extrabold text-[#6D4C41] mb-6 drop-shadow-md animate-pulse-slow">
           404
         </h1>
 
-        {/* Coffee Icon */}
         <div className="flex justify-center mb-6 animate-float-slow">
           <Coffee size={52} className="text-[#6D4C41]" />
         </div>
 
-        {/* Text */}
         <h2 className="text-2xl md:text-3xl font-semibold text-[#4E342E] mb-3">
           Oops! Page Not Found
         </h2>
@@ -42,7 +37,6 @@ const NotFound = () => {
           The page you are looking for doesn’t exist or has been moved.
         </p>
 
-        {/* Button */}
         <Link
           to="/"
           className="inline-block px-8 py-3 bg-[#6D4C41] hover:bg-[#8D6E63] text-[#FFEBCD] font-bold rounded-full shadow-lg transition-all duration-300 hover:scale-105"
@@ -51,7 +45,6 @@ const NotFound = () => {
         </Link>
       </div>
 
-      {/* Animations */}
       <style jsx>{`
         @keyframes float {
           0%,
