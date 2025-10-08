@@ -1,8 +1,13 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router";
 import { Coffee } from "lucide-react";
+import useAuth from "../hooks/useAuth";
+import Swal from "sweetalert2";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
+  const { user, logOut } = useAuth();
+  console.log(user);
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
@@ -19,7 +24,6 @@ const Navbar = () => {
     <nav className="backdrop-blur-xl bg-[#3E2723] text-[#F3E5AB] sticky w-full top-0 z-50 shadow-[0_3px_15px_rgba(62,39,35,0.3)] transition-all duration-500">
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
-          {/* Logo */}
           <Link
             to="/"
             className="flex items-center gap-2 font-extrabold text-2xl tracking-wide group"
@@ -33,7 +37,6 @@ const Navbar = () => {
             </span>
           </Link>
 
-          {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8 font-medium items-center">
             {navLinks.map((link) => (
               <Link
@@ -51,15 +54,47 @@ const Navbar = () => {
               </Link>
             ))}
 
-            <Link
-              to="/login"
-              className="bg-gradient-to-r from-[#6D4C41] to-[#8D6E63] px-4 py-1 rounded-full hover:opacity-90 font-semibold shadow-md transition-all duration-300"
-            >
-              Login
-            </Link>
+            {user ? (
+              <div className="flex items-center gap-2">
+                {user.photoURL ? (
+                  <img
+                    src={user.photoURL}
+                    alt={user.displayName || "User"}
+                    className="w-8 h-8 rounded-full object-cover border-2 border-amber-500"
+                  />
+                ) : (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="text-[#FFD180] rounded-full border-2 border-amber-500"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M12 2a5 5 0 1 1 -5 5l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+                    <path d="M14 14a5 5 0 0 1 5 5v1a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-1a5 5 0 0 1 5 -5h4z" />
+                  </svg>
+                )}
+                <button
+                  onClick={() =>
+                    logOut().then(() => toast.success("Logout successfully!"))
+                  }
+                  className="bg-gradient-to-r from-[#6D4C41] to-[#8D6E63] px-4 py-1 rounded-full font-semibold shadow-md hover:opacity-90 transition-all duration-300"
+                >
+                  LogOut
+                </button>
+              </div>
+            ) : (
+              <Link
+                to="/login"
+                className="bg-gradient-to-r from-[#6D4C41] to-[#8D6E63] px-4 py-1 rounded-full font-semibold shadow-md hover:opacity-90 transition-all duration-300"
+              >
+                Login
+              </Link>
+            )}
           </div>
 
-          {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
             <button
               onClick={toggleMenu}
@@ -101,7 +136,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <div
         className={`md:hidden bg-[#4E342E]/95 backdrop-blur-xl border-t border-[#D7CCC8]/20 
         transition-all duration-500 overflow-hidden ${

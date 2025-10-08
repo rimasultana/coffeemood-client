@@ -1,9 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { User, Mail, Lock, Camera } from "lucide-react";
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../../provider/AuthProvider";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router";
+import GoogleLoginPage from "../../share/GoogleLogin";
+import Swal from "sweetalert2";
 
 const Register = () => {
+  const { createUser } = useContext(AuthContext);
   const [preview, setPreview] = useState(null);
+  const navigate = useNavigate();
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -13,15 +20,32 @@ const Register = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    createUser(data.email, data.password)
+      .then(() => {
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: "Logout Successfully!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+
+        reset();
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Registration failed. Please try again.");
+      });
   };
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-b from-[#FFF8E1] to-[#FFE5B4] flex items-center justify-center overflow-hidden py-4 pt-20">
+    <section className="relative min-h-screen bg-gradient-to-b from-[#FFF8E1] to-[#FFE5B4] flex items-center justify-center overflow-hidden py-4 ">
       <div className="absolute inset-0 pointer-events-none">
         {[...Array(30)].map((_, i) => (
           <span
@@ -145,7 +169,9 @@ const Register = () => {
             Register
           </button>
         </form>
-
+        <div className="mt-4">
+          <GoogleLoginPage />
+        </div>
         <p className="text-center text-sm text-[#3E2723]/70 mt-6">
           Already have an account?{" "}
           <a href="#" className="text-[#6D4C41] font-semibold hover:underline">

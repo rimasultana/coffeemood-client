@@ -24,7 +24,7 @@ const favorites = [
 
 const Favorites = () => {
   return (
-    <section className="py-24 bg-gradient-to-b from-[#FFF8E1] to-[#FFEBCD]">
+    <section className="py-36 bg-gradient-to-b from-[#FFF8E1] to-[#FFEBCD]">
       <div className="max-w-7xl mx-auto px-4">
         <h2 className="text-4xl md:text-5xl font-extrabold text-[#4E342E] text-center mb-12 drop-shadow-md">
           ❤️ Your Favorites
@@ -32,8 +32,12 @@ const Favorites = () => {
 
         {favorites.length === 0 ? (
           <div className="text-center text-[#5D4037]/80">
-            <p className="text-xl mb-4">You haven’t added any favorites yet ☕</p>
-            <p>Start exploring coffees and blogs to save your favorites here!</p>
+            <p className="text-xl mb-4">
+              You haven’t added any favorites yet ☕
+            </p>
+            <p>
+              Start exploring coffees and blogs to save your favorites here!
+            </p>
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
@@ -51,7 +55,10 @@ const Favorites = () => {
                   <h3 className="text-xl font-semibold text-[#3E2723]">
                     {item.name}
                   </h3>
-                  <Heart size={24} className="text-[#D32F2F] hover:scale-110 transition-transform duration-300 cursor-pointer" />
+                  <Heart
+                    size={24}
+                    className="text-[#D32F2F] hover:scale-110 transition-transform duration-300 cursor-pointer"
+                  />
                 </div>
                 <p className="text-sm text-[#5D4037]/80">{item.mood}</p>
               </div>
