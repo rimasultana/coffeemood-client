@@ -62,7 +62,7 @@ const Login = () => {
             to={"/register"}
             className="text-[#6D4C41] font-semibold hover:underline"
           >
-            Sign Up
+            Register
           </Link>
         </p>
       </div>

@@ -3,12 +3,13 @@ import MainLayout from "../layout/MainLayout";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import NotFound from "../share/NotFound";
 
 const route = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
-    errorElement: <div>404</div>,
+    errorElement: <NotFound/>,
     children: [
       {
         path: "/",
